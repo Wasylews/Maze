@@ -7,7 +7,6 @@ int main(int argc, char const *argv[]) {
 
     sf::Texture ballTexture;
     ballTexture.loadFromFile("assets/m.png");
-
     Player ball(ballTexture);
 
     sf::Clock timer;
@@ -20,8 +19,11 @@ int main(int argc, char const *argv[]) {
         }
         window.clear(sf::Color::White);
 
+// TODO: main menu, level loading/switching
         sf::Time elapsed = timer.restart();
         ball.update(elapsed.asSeconds());
+
+// TODO: check ball for collision
 
         window.draw(ball.sprite());
 
