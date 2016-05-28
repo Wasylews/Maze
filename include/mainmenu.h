@@ -8,7 +8,6 @@ class MainMenu: public Screen{
 public:
     MainMenu() {};
     virtual int run(sf::RenderWindow &app);
-
 };
 
 

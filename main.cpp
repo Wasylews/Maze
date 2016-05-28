@@ -6,7 +6,8 @@
 
 
 int main(int argc, char const *argv[]) {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Maze");
+    std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+    sf::RenderWindow window(modes[0], "Maze");
 
     std::vector<Screen *> screens;
     int currentScreen = 0;

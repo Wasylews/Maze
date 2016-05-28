@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 
 class Screen {
+protected:
+    void resizeWindow(sf::RenderWindow &app);
 public:
     virtual int run(sf::RenderWindow &app) = 0;
 };
