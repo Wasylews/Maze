@@ -7,12 +7,17 @@ MainMenu::MainMenu() {
 
     backgroundTex.loadFromFile("assets/background.png");
     background.setTexture(backgroundTex);
+
+    backgroundMusic.openFromFile("assets/menu.ogg");
+    backgroundMusic.setLoop(true);
 }
 
 
 int MainMenu::run(sf::RenderWindow &app) {
     sf::Event event;
     bool running = true;
+
+    backgroundMusic.play();
 
     while (running) {
         while (app.pollEvent(event)) {
@@ -24,8 +29,10 @@ int MainMenu::run(sf::RenderWindow &app) {
                     resizeWindow(app);
                     break;
                 case sf::Event::KeyPressed:
-                    if (event.key.code == sf::Keyboard::Return)
+                    if (event.key.code == sf::Keyboard::Return) {
+                        backgroundMusic.stop();
                         return 1;
+                    }
                 default:
                 // error, unknown event type
                     break;

@@ -3,14 +3,18 @@
 
 #include "screen.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 
 class MainMenu: public Screen {
     std::vector<sf::String> m_items;
     sf::Font font;
     sf::Text item;
+
     sf::Texture backgroundTex;
     sf::Sprite background;
+
+    sf::Music backgroundMusic;
 public:
     MainMenu();
     void addItem(const sf::String &name);
