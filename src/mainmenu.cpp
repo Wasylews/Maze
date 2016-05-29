@@ -1,20 +1,15 @@
 #include "mainmenu.h"
 
+MainMenu::MainMenu() {
+    font.loadFromFile("assets/sansation.ttf");
+    item.setFont(font);
+    item.setColor(sf::Color::Red);
+}
+
+
 int MainMenu::run(sf::RenderWindow &app) {
     sf::Event event;
     bool running = true;
-
-    sf::Font font;
-    font.loadFromFile("assets/sansation.ttf");
-
-    sf::Text playGame("Play", font);
-    playGame.setCharacterSize(24);
-    playGame.setColor(sf::Color::Red);
-
-    // sf::FloatRect textRect = playGame.getLocalBounds();
-    // playGame.setOrigin(textRect.left + textRect.width/2.0f,
-    //                textRect.top  + textRect.height/2.0f);
-    // playGame.setPosition(sf::Vector2f(SCRWIDTH/2.0f,SCRHEIGHT/2.0f));
 
     while (running) {
         while (app.pollEvent(event)) {
@@ -35,10 +30,26 @@ int MainMenu::run(sf::RenderWindow &app) {
         }
         app.clear(sf::Color::White);
 
-        app.draw(playGame);
+        sf::Vector2f pos = app.getView().getSize();
+        pos.x /= 2.f;
+        pos.y /= 4.f;
+
+        for (int i = 0; i < m_items.size(); ++i) {
+            item.setString(m_items[i]);
+            item.setOrigin(item.getLocalBounds().left/2.0f,
+                           item.getLocalBounds().top/2.0f);
+            pos.y += 64.f;
+            item.setPosition(pos);
+            app.draw(item);
+        }
 
         app.display();
     }
 
     return -1;
+}
+
+
+void MainMenu::addItem(const sf::String &name) {
+    m_items.push_back(name);
 }

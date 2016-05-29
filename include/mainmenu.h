@@ -4,9 +4,14 @@
 #include "screen.h"
 #include <SFML/Graphics.hpp>
 
-class MainMenu: public Screen{
+
+class MainMenu: public Screen {
+    std::vector<sf::String> m_items;
+    sf::Font font;
+    sf::Text item;
 public:
-    MainMenu() {};
+    MainMenu();
+    void addItem(const sf::String &name);
     virtual int run(sf::RenderWindow &app);
 };
 

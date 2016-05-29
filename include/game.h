@@ -4,7 +4,7 @@
 #include "screen.h"
 #include <SFML/Graphics.hpp>
 
-class Game: public Screen{
+class Game: public Screen {
 public:
     Game() {};
     virtual int run(sf::RenderWindow &app);
