@@ -4,6 +4,9 @@ MainMenu::MainMenu() {
     font.loadFromFile("assets/sansation.ttf");
     item.setFont(font);
     item.setColor(sf::Color::Red);
+
+    backgroundTex.loadFromFile("assets/background.png");
+    background.setTexture(backgroundTex);
 }
 
 
@@ -28,9 +31,13 @@ int MainMenu::run(sf::RenderWindow &app) {
                     break;
             }
         }
-        app.clear(sf::Color::White);
+        app.clear();
 
         sf::Vector2f pos = app.getView().getSize();
+        background.setTextureRect(sf::IntRect(0, 0, pos.x, pos.y));
+
+        app.draw(background);
+
         pos.x /= 2.f;
         pos.y /= 4.f;
 
