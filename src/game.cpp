@@ -14,17 +14,19 @@ int Game::run(sf::RenderWindow &app) {
 
     while (running) {
         while (app.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                return -1;
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                switch (event.key.code) {
-                    case sf::Keyboard::Escape:
+            switch (event.type) {
+                case sf::Event::Closed:
+                    running = false;
+                    break;
+                case sf::Event::Resized:
+                    resizeWindow(app);
+                    break;
+                case sf::Event::KeyPressed:
+                    if (event.key.code == sf::Keyboard::Escape)
                         return 0;
-                        break;
-                    default:
-                        break;
-                }
+                default:
+                // error, unknown event type
+                    break;
             }
         }
         app.clear(sf::Color::Red);
