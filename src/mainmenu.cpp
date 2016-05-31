@@ -5,7 +5,7 @@ MainMenu::MainMenu() {
     item.setFont(font);
     item.setColor(sf::Color::Red);
 
-    backgroundTex.loadFromFile("assets/background.png");
+    backgroundTex.loadFromFile("assets/background.jpg");
     background.setTexture(backgroundTex);
 
     backgroundMusic.openFromFile("assets/menu.ogg");
@@ -28,11 +28,13 @@ int MainMenu::run(sf::RenderWindow &app) {
                 case sf::Event::Resized:
                     resizeWindow(app);
                     break;
-                case sf::Event::KeyPressed:
-                    if (event.key.code == sf::Keyboard::Return) {
+                case sf::Event::MouseButtonReleased:
+                    if (event.mouseButton.button == sf::Mouse::Left) {
                         backgroundMusic.stop();
+                        // TODO: check mouse clicks on text
                         return 1;
                     }
+                    break;
                 default:
                 // error, unknown event type
                     break;
