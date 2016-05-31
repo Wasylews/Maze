@@ -12,3 +12,18 @@ void Player::update(double dt) {
         m_sprite.move(0, dt*dy);
     }
 }
+
+
+const int Player::x() {
+    return m_x;
+}
+
+
+const int Player::y() {
+    return m_y;
+}
+
+
+const Direction Player::way() {
+    return m_way;
+}
