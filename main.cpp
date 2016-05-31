@@ -12,9 +12,9 @@ int main(int argc, char const *argv[]) {
     int currentScreen = 0;
 
     MainMenu menu;
-    menu.addItem("Play");
-    menu.addItem("Options");
-    menu.addItem("Exit");
+    menu.addItem("Play", 1);
+    menu.addItem("Options", 2);
+    menu.addItem("Exit", -1);
     screens.push_back(&menu);
 
     Game game;

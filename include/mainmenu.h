@@ -4,21 +4,32 @@
 #include "screen.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <vector>
+
+
+struct MenuItem {
+    int screen;
+    sf::Text *item;
+};
 
 
 class MainMenu: public Screen {
-    std::vector<sf::String> m_items;
+    std::vector<MenuItem> m_items;
     sf::Font font;
-    sf::Text item;
 
     sf::Texture backgroundTex;
     sf::Sprite background;
 
     sf::Music backgroundMusic;
+
+    static const int INVALID_SCREEN = 65536;
+
+    int itemSelected(float x, float y);
 public:
     MainMenu();
-    void addItem(const sf::String &name);
+    void addItem(const sf::String &name, const int screen);
     virtual int run(sf::RenderWindow &app);
+    ~MainMenu();
 };
 
 
